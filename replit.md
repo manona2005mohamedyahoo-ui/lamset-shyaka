@@ -1,8 +1,12 @@
-# [Project name]
+# لمسة شياكة
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+واجهة متجر عربي للشنط والعطور والطرح. النسخة الحالية واجهة أولية بكتالوج فارغ وليست متجرًا جاهزًا للبيع؛ راجع `artifacts/lamset-shyaka/DELIVERY.ar.md` لحدود التنفيذ.
 
 ## Run & Operate
+
+- `artifacts/lamset-shyaka: web` — managed storefront workflow.
+- `pnpm --filter @workspace/lamset-shyaka run typecheck` — storefront typecheck.
+- Shopify is the selected commerce system of record. The connection is attached, but catalog/cart/order API integration and merchant admin are not implemented yet.
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages

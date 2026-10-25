@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "لمسة شياكة"
+description = "متجر عربي راقٍ للشنط والعطور والطرح بواجهة RTL متجاوبة، مرتبط بخدمة Shopify لإدارة التجارة."
+version = "1.0.0"
+id = "artifacts/lamset-shyaka"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21347
+
+[services.development]
+run = "pnpm --filter @workspace/lamset-shyaka run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/lamset-shyaka", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/lamset-shyaka/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21347"
+BASE_PATH = "/"
