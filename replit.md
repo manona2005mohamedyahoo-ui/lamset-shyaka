@@ -4,6 +4,9 @@
 
 ## Run & Operate
 
+- `artifacts/lamset-mobile: expo` — native Expo companion for Android/iOS.
+- Mobile delivery notes: `artifacts/lamset-mobile/MOBILE.ar.md`. Owner administration opens Shopify's own authenticated dashboard externally; there is no local role switch or native admin CRUD.
+
 - `artifacts/lamset-shyaka: web` — managed storefront workflow.
 - `pnpm --filter @workspace/lamset-shyaka run typecheck` — storefront typecheck.
 - Shopify is the selected commerce system of record. The connection is attached, but catalog/cart/order API integration and merchant admin are not implemented yet.
