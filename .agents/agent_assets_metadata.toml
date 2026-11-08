@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "ngx_yjAdWam_mkQWKEYGK"
+uri = "file://.local/outputs/lamset-shyaka-presentation.pptx"
+type = "slides"
+title = "لمسة شياكة — عرض المشروع (PowerPoint)"
+description = "عرض المشروع العربي بصيغة PowerPoint، ويضم سبع شرائح عن الهوية والواجهة والتطبيق واتصال Shopify وحالة الجاهزية."
+logical_id = "9105c620-0986-44ca-a625-36fefa726f5d"
+content_hash = "sha256:6b9b37876df6e3e9325beee4b7da35c8395bff5392d2ccf005fe0e270e226e3f"
+size = 3392917
+mtime_ms = 1794177395811
+storage_uri = "gcs://replit-rams-assets-reed/rams/assets/repl:265ba597-4378-4b3b-a7c9-446881de4114/9105c620-0986-44ca-a625-36fefa726f5d/52315070-d04c-42e0-9a8b-351daaa313e2"
+storage_version_token = "1794177396386410"
+content_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation"

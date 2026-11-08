@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/lamset-overview/"
+title = "لمسة شياكة — عرض المشروع"
+description = "عرض عربي يشرح واجهة المتجر وتطبيق الجوال والاتصال بـ Shopify، مع توضيح الحالة الحالية ومتطلبات الإطلاق."
+version = "1.0.0"
+id = "artifacts/lamset-overview"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/lamset-overview/" ]
+localPort = 19319
+
+[services.development]
+run = "pnpm --filter @workspace/lamset-overview run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/lamset-overview", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/lamset-overview/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19319"
+BASE_PATH = "/lamset-overview/"

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "position": 1,
+    "filepath": "src/pages/slides/Cover.tsx",
+    "title": "لمسة شياكة",
+    "description": "تعريف بالمتجر وتجربة الويب والجوال.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000002",
+    "position": 2,
+    "filepath": "src/pages/slides/Identity.tsx",
+    "title": "هوية تليق بالتفاصيل",
+    "description": "ألوان المتجر واللغة والصور التحريرية.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "position": 3,
+    "filepath": "src/pages/slides/Storefront.tsx",
+    "title": "واجهة المتجر",
+    "description": "صفحات الويب والبحث والفلاتر.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000004",
+    "position": 4,
+    "filepath": "src/pages/slides/CustomerApp.tsx",
+    "title": "تطبيق للزبائن",
+    "description": "قدرات تطبيق الجوال وحدود النسخة الحالية.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000005",
+    "position": 5,
+    "filepath": "src/pages/slides/Shopify.tsx",
+    "title": "متصل بمتجر Shopify",
+    "description": "حالة اتصال المنتجات والسلة والدفع.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000006",
+    "position": 6,
+    "filepath": "src/pages/slides/Management.tsx",
+    "title": "الإدارة والشفافية",
+    "description": "طريقة الإدارة والوظائف التي لم تُفعّل.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000007",
+    "position": 7,
+    "filepath": "src/pages/slides/BeforeLaunch.tsx",
+    "title": "ما قبل الإطلاق",
+    "description": "خطوات الإعداد والاختبار المتبقية.",
+    "speakerNotes": ""
+  }
+]
