@@ -14,3 +14,17 @@ mtime_ms = 1794177395811
 storage_uri = "gcs://replit-rams-assets-reed/rams/assets/repl:265ba597-4378-4b3b-a7c9-446881de4114/9105c620-0986-44ca-a625-36fefa726f5d/52315070-d04c-42e0-9a8b-351daaa313e2"
 storage_version_token = "1794177396386410"
 content_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+
+[[outputs]]
+id = "y0EfagQi1RHYjyDLp1Vo0"
+uri = "file://.local/outputs/lamset-shyaka-source.zip"
+type = "unspecified"
+title = "لمسة شياكة — ملفات المشروع (ZIP)"
+description = "ملفات المشروع المصدري الحالية مع تطبيق الجوال والموقع وواجهة API والعرض، دون المكتبات المثبتة أو ملفات الأسرار."
+logical_id = "34b25783-0b60-4e6d-a024-3c9d599ee37e"
+content_hash = "sha256:bf62e5f4f8efb105d118e49ced716a6137e671c4ddf753867dea0ed99c451cb0"
+size = 3620208
+mtime_ms = 1794177964522
+storage_uri = "gcs://replit-rams-assets-reed/rams/assets/repl:265ba597-4378-4b3b-a7c9-446881de4114/34b25783-0b60-4e6d-a024-3c9d599ee37e/732b9b6d-c70f-4b2a-a3c0-d13810dc2722"
+storage_version_token = "1794177980527183"
+content_type = "application/octet-stream"
