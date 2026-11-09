@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "wouter";
-import { useAuth } from "@clerk/react";
+import { useAuth, useClerk } from "@clerk/react";
 import {
   getGetStoreBrandingQueryKey,
   useGetAdminStoreBranding,
@@ -51,9 +51,10 @@ function contrastingText(hex: string) {
 export default function Admin() {
   useSeo("إعدادات الهوية", "إعدادات اسم وشعار وألوان المتجر.");
   const { isLoaded, isSignedIn } = useAuth();
+  const { signOut } = useClerk();
   const client = useQueryClient();
   const settings = useGetAdminStoreBranding({
-    query: { enabled: isLoaded && Boolean(isSignedIn), retry: false, staleTime: 0 },
+    query: { enabled: isLoaded && Boolean(isSignedIn), retry: false, staleTime: 0, refetchOnWindowFocus: false },
   });
   const shopify = useGetMobileStore({
     query: { enabled: Boolean(settings.data), retry: false, staleTime: 60_000 },
@@ -100,6 +101,7 @@ export default function Admin() {
     <>
       <PageHeader eyebrow="إدارة المتجر" title="إعدادات الهوية" intro="غيّري الاسم والشعار والألوان التي تظهر في الموقع والتطبيق." />
       <section className="mx-auto max-w-4xl space-y-8 px-5 md:px-10">
+        {isSignedIn && <button type="button" onClick={() => void signOut({ redirectUrl: import.meta.env.BASE_URL })} className="min-h-11 underline underline-offset-4">تسجيل الخروج</button>}
         {!isLoaded ? (
           <div className="flex min-h-40 items-center justify-center text-muted-foreground"><LoaderCircle className="me-2 h-5 w-5 animate-spin" /> جارٍ التحقق من تسجيل الدخول…</div>
         ) : !isSignedIn ? (
@@ -169,7 +171,7 @@ export default function Admin() {
                 </div>
                 <p className="text-xs leading-relaxed text-muted-foreground">يُرفض الحفظ إذا لم يكن تباين النص والخلفية واللون المميز واضحًا بما يكفي للقراءة.</p>
               </div>
-              <aside className="flex flex-col justify-center border border-border/70 bg-background p-6" aria-label="معاينة الهوية">
+              <aside className="flex flex-col justify-center border border-border/70 p-6" style={{ backgroundColor: draft.background, color: draft.foreground }} aria-label="معاينة الهوية">
                 <p className="eyebrow">معاينة الهوية</p>
                 <div className="mt-6 flex min-h-20 items-center justify-center border-b border-border pb-5">
                   {draft.logoUrl ? (

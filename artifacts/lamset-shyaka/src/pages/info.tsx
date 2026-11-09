@@ -2,7 +2,7 @@ import { useParams } from 'wouter';
 import { CircleDashed, Mail } from 'lucide-react';
 import { ButtonLink, EditorialImage, EmptyState, Ornament, PageHeader, Reveal } from '@/components/editorial';
 import { useSeo } from '@/hooks/use-seo';
-import { BRAND, CATEGORIES } from '@/lib/site';
+import { CATEGORIES } from '@/lib/site';
 import { useBranding } from '@/context/branding';
 import NotFound from './not-found';
 

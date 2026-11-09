@@ -56,7 +56,6 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
 
 function Header() {
   const [location] = useLocation();
-  const branding = useBranding();
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -218,7 +217,7 @@ function Footer() {
         { href: '/about', label: `عن ${branding.name}` },
         { href: '/contact', label: 'تواصلي معنا' },
         { href: '/account', label: 'حسابي' },
-        { href: '/admin', label: 'حالة إعداد المتجر' },
+        { href: '/admin', label: 'إعدادات الهوية' },
       ],
     },
   ];

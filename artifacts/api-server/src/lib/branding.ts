@@ -1,4 +1,4 @@
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { db, storeBrandingTable, type StoreBrandingRecord } from "@workspace/db";
 
 export const DEFAULT_BRANDING = {

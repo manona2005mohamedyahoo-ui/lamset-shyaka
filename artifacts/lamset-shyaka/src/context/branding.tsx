@@ -60,6 +60,8 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const root = document.documentElement;
+    for (const token of ["secondary", "muted", "popover", "ivory"]) root.style.setProperty(`--${token}`, hexToHsl(branding.background));
+    for (const token of ["secondary-foreground", "muted-foreground", "popover-foreground"]) root.style.setProperty(`--${token}`, hexToHsl(branding.foreground));
     root.style.setProperty("--background", hexToHsl(branding.background));
     root.style.setProperty("--foreground", hexToHsl(branding.foreground));
     root.style.setProperty("--card", hexToHsl(branding.background));
