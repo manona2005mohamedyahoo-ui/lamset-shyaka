@@ -6,13 +6,23 @@ if (!emailAddress) {
 }
 
 const result = await clerkClient.users.getUserList({ emailAddress: [emailAddress], limit: 2 });
-const user = result.data.find((candidate) =>
+let user = result.data.find((candidate) =>
   candidate.emailAddresses.some(
     (address) =>
       address.emailAddress.trim().toLowerCase() === emailAddress &&
       address.verification?.status === "verified",
   ),
 );
+
+// Explicit provisioning only for an owner-confirmed email with a working
+// sign-in provider (Google is enabled for this store). Never create passwords.
+if (!user && result.totalCount === 0 && process.argv.includes("--create")) {
+  user = await clerkClient.users.createUser({
+    emailAddress: [emailAddress],
+    skipPasswordRequirement: true,
+    publicMetadata: { storeRole: "owner" },
+  });
+}
 
 if (!user) {
   throw new Error("No verified Clerk account found for that email. Sign up and verify it first.");
