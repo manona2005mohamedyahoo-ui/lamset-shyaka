@@ -29,7 +29,9 @@ import type {
   MobileCartInput,
   MobileCheckout,
   MobileProduct,
-  MobileStore
+  MobileStore,
+  StoreBranding,
+  UpdateStoreBrandingBody
 } from './api.schemas';
 
 import { customFetch } from '../custom-fetch';
@@ -58,6 +60,296 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getGetStoreBrandingUrl = () => {
+
+
+
+
+  return `/api/store/branding`
+}
+
+/**
+ * @summary Get the public store identity
+ */
+export const getStoreBranding = async ( options?: Parameters<typeof customFetch>[1]): Promise<StoreBranding> => {
+
+  return customFetch<StoreBranding>(getGetStoreBrandingUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetStoreBrandingQueryKey = () => {
+    return [
+    `/api/store/branding`
+    ] as const;
+    }
+
+
+export const getGetStoreBrandingQueryOptions = <TData = Awaited<ReturnType<typeof getStoreBranding>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetStoreBrandingQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getStoreBranding>>> = ({ signal }) => getStoreBranding({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetStoreBrandingQueryResult = NonNullable<Awaited<ReturnType<typeof getStoreBranding>>>
+export type GetStoreBrandingQueryError = ErrorType<unknown>
+
+
+export function useGetStoreBranding<TData = Awaited<ReturnType<typeof getStoreBranding>>, TError = ErrorType<unknown>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getStoreBranding>>,
+          TError,
+          Awaited<ReturnType<typeof getStoreBranding>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetStoreBranding<TData = Awaited<ReturnType<typeof getStoreBranding>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getStoreBranding>>,
+          TError,
+          Awaited<ReturnType<typeof getStoreBranding>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetStoreBranding<TData = Awaited<ReturnType<typeof getStoreBranding>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Get the public store identity
+ */
+
+export function useGetStoreBranding<TData = Awaited<ReturnType<typeof getStoreBranding>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetStoreBrandingQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetAdminStoreBrandingUrl = () => {
+
+
+
+
+  return `/api/admin/store/branding`
+}
+
+/**
+ * @summary Get settings for the authorized store administrator
+ */
+export const getAdminStoreBranding = async ( options?: Parameters<typeof customFetch>[1]): Promise<StoreBranding> => {
+
+  return customFetch<StoreBranding>(getGetAdminStoreBrandingUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAdminStoreBrandingQueryKey = () => {
+    return [
+    `/api/admin/store/branding`
+    ] as const;
+    }
+
+
+export const getGetAdminStoreBrandingQueryOptions = <TData = Awaited<ReturnType<typeof getAdminStoreBranding>>, TError = ErrorType<void>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAdminStoreBrandingQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAdminStoreBranding>>> = ({ signal }) => getAdminStoreBranding({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetAdminStoreBrandingQueryResult = NonNullable<Awaited<ReturnType<typeof getAdminStoreBranding>>>
+export type GetAdminStoreBrandingQueryError = ErrorType<void>
+
+
+export function useGetAdminStoreBranding<TData = Awaited<ReturnType<typeof getAdminStoreBranding>>, TError = ErrorType<void>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getAdminStoreBranding>>,
+          TError,
+          Awaited<ReturnType<typeof getAdminStoreBranding>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetAdminStoreBranding<TData = Awaited<ReturnType<typeof getAdminStoreBranding>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getAdminStoreBranding>>,
+          TError,
+          Awaited<ReturnType<typeof getAdminStoreBranding>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetAdminStoreBranding<TData = Awaited<ReturnType<typeof getAdminStoreBranding>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Get settings for the authorized store administrator
+ */
+
+export function useGetAdminStoreBranding<TData = Awaited<ReturnType<typeof getAdminStoreBranding>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getAdminStoreBranding>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetAdminStoreBrandingQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getUpdateAdminStoreBrandingUrl = () => {
+
+
+
+
+  return `/api/admin/store/branding`
+}
+
+/**
+ * @summary Update the store name, logo, and palette
+ */
+export const updateAdminStoreBranding = async (updateStoreBrandingBody: UpdateStoreBrandingBody, options?: Parameters<typeof customFetch>[1]): Promise<StoreBranding> => {
+
+    const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(h as Iterable<Iterable<string>>, (entry) => Array.from(entry) as [string, string]),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<string | readonly string[] | undefined>(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+return customFetch<StoreBranding>(getUpdateAdminStoreBrandingUrl(),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...getHeaders(options?.headers) },
+    body: JSON.stringify(updateStoreBrandingBody)
+  }
+);}
+
+
+
+
+
+export const getUpdateAdminStoreBrandingMutationKey = () => ['updateAdminStoreBranding'] as const;
+
+export const getUpdateAdminStoreBrandingMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateAdminStoreBranding>>, TError,UpdateAdminStoreBrandingMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateAdminStoreBranding>>, TError,UpdateAdminStoreBrandingMutationVariables, TContext> => {
+
+const mutationKey = getUpdateAdminStoreBrandingMutationKey();
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateAdminStoreBranding>>, UpdateAdminStoreBrandingMutationVariables> = (props) => {
+          const {data} = props ?? {};
+
+          return  updateAdminStoreBranding(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateAdminStoreBrandingMutationResult = NonNullable<Awaited<ReturnType<typeof updateAdminStoreBranding>>>
+    export type UpdateAdminStoreBrandingMutationBody = BodyType<UpdateStoreBrandingBody>
+    export type UpdateAdminStoreBrandingMutationError = ErrorType<void>
+    export type UpdateAdminStoreBrandingMutationVariables = {data: BodyType<UpdateStoreBrandingBody>}
+
+    /**
+ * @summary Update the store name, logo, and palette
+ */
+export const useUpdateAdminStoreBranding = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateAdminStoreBranding>>, TError,UpdateAdminStoreBrandingMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient): UseMutationResult<
+        Awaited<ReturnType<typeof updateAdminStoreBranding>>,
+        TError,
+        UpdateAdminStoreBrandingMutationVariables,
+        TContext
+      > => {
+      return useMutation(getUpdateAdminStoreBrandingMutationOptions(options), queryClient);
+    }
 
 export const getGetMobileStoreUrl = () => {
 

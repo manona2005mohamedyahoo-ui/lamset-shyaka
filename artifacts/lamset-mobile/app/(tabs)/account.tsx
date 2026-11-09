@@ -8,9 +8,10 @@ import { Page, Copy, Action, s } from '@/components/shop-ui';
 import { fonts } from '@/constants/colors';
 import { useColors } from '@/hooks/useColors';
 import { useShop } from '@/context/shop';
+import { useBranding } from '@/context/branding';
 
 export default function Account() {
-  const c = useColors(); const shop = useShop();
+  const c = useColors(); const shop = useShop(); const branding = useBranding();
   const store = useGetMobileStore({ query: { staleTime: 60000, retry: 1 } });
   const [busy, setBusy] = useState(false); const [error, setError] = useState('');
   async function manage() {
@@ -26,7 +27,7 @@ export default function Account() {
   }
   return <Page title="مساحتكِ" subtitle="كل التفاصيل اللي تهمكِ">
     <View style={{ marginHorizontal: 22, padding: 24, backgroundColor: c.secondary }}>
-      <View style={s.row}><Copy style={{ fontFamily: fonts.heading, fontSize: 27, lineHeight: 40 }}>أهلًا بيكِ في لمسة شياكة</Copy><Feather name="user" size={26} color={c.accent} /></View>
+      <View style={s.row}><Copy style={{ fontFamily: fonts.heading, fontSize: 27, lineHeight: 40 }}>أهلًا بيكِ في {branding.name}</Copy><Feather name="user" size={26} color={c.accent} /></View>
       <Copy muted style={{ marginTop: 10 }}>تصفّحي كضيفة واحفظي اختياراتكِ على جهازكِ. بيانات التوصيل والدفع تُدخل في Shopify عند إتمام الطلب.</Copy>
     </View>
     <View style={s.section}>
@@ -40,6 +41,6 @@ export default function Account() {
       {!!error && <Copy style={{ color: c.destructive, marginTop: 10 }}>{error}</Copy>}
       <Copy muted style={{ fontSize: 11, marginTop: 13 }}>هذا المدخل لا يمنح أي صلاحيات. التحقق من الهوية والصلاحيات يتم لدى Shopify، وليس عبر اختيار دور داخل التطبيق.</Copy>
     </View>
-    <View style={s.section}><Copy style={{ fontFamily: fonts.heading, fontSize: 25, lineHeight: 38 }}>قبل ما تطلبي</Copy><Copy muted style={{ marginTop: 8 }}>راجعي سياسات التوصيل والاستبدال والخصوصية في صفحة إتمام الطلب. لا نعرض مواعيد شحن أو بيانات تواصل لم تُدخلها صاحبة المتجر.</Copy><Copy muted style={{ fontSize: 11, marginTop: 20 }}>لمسة شياكة • نسخة التطبيق الأولى{'\n'}المفضلة والسلة محليتان، ولا تتزامنان بين الأجهزة حاليًا.</Copy></View>
+    <View style={s.section}><Copy style={{ fontFamily: fonts.heading, fontSize: 25, lineHeight: 38 }}>قبل ما تطلبي</Copy><Copy muted style={{ marginTop: 8 }}>راجعي سياسات التوصيل والاستبدال والخصوصية في صفحة إتمام الطلب. لا نعرض مواعيد شحن أو بيانات تواصل لم تُدخلها صاحبة المتجر.</Copy><Copy muted style={{ fontSize: 11, marginTop: 20 }}>{branding.name} • نسخة التطبيق الأولى{'\n'}المفضلة والسلة محليتان، ولا تتزامنان بين الأجهزة حاليًا.</Copy></View>
   </Page>;
 }

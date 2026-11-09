@@ -8,13 +8,20 @@ import { Page, Copy, Action, ProductCard, Empty, Loading, s } from '@/components
 import { fonts } from '@/constants/colors';
 import { categories } from '@/lib/catalog';
 import { useColors } from '@/hooks/useColors';
+import { useBranding } from '@/context/branding';
 
 export default function Home() {
   const c = useColors();
+  const branding = useBranding();
   const products = useGetMobileProducts({ query: { staleTime: 60000, retry: 1 } });
   return <Page>
     <View style={[s.row, { paddingHorizontal: 22, paddingBottom: 15 }]}>
-      <View><Copy style={{ fontFamily: fonts.heading, fontSize: 30, lineHeight: 43 }}>لمسة شياكة <Copy style={{ color: c.accent }}>◆</Copy></Copy><Copy muted style={{ fontSize: 10, letterSpacing: 2 }}>للتفاصيل التي تشبهكِ</Copy></View>
+      <View>
+        {branding.logoUrl
+          ? <Image source={{ uri: branding.logoUrl }} style={{ width: 170, height: 48 }} contentFit="contain" accessibilityLabel={`شعار ${branding.name}`} />
+          : <Copy style={{ fontFamily: fonts.heading, fontSize: 30, lineHeight: 43 }}>{branding.name} <Copy style={{ color: c.accent }}>◆</Copy></Copy>}
+        <Copy muted style={{ fontSize: 10, letterSpacing: 2 }}>للتفاصيل التي تشبهكِ</Copy>
+      </View>
       <Pressable onPress={() => router.push('/shop')} accessibilityRole="button" accessibilityLabel="البحث في المنتجات" style={s.icon}><Feather name="search" size={22} color={c.foreground} /></Pressable>
     </View>
     <View style={{ marginHorizontal: 16 }}>

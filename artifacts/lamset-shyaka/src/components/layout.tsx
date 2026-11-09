@@ -1,8 +1,9 @@
 import { type FormEvent, type ReactNode, useEffect, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
-import { BRAND, CATEGORIES, NAV } from '@/lib/site';
+import { CATEGORIES, NAV } from '@/lib/site';
 import { cn } from '@/lib/utils';
+import { BrandMark, useBranding } from '@/context/branding';
 
 function SearchForm({ id, onDone }: { id: string; onDone?: () => void }) {
   const [, setLocation] = useLocation();
@@ -55,6 +56,7 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
 
 function Header() {
   const [location] = useLocation();
+  const branding = useBranding();
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -85,7 +87,7 @@ function Header() {
           <Menu className="h-5 w-5" />
         </button>
         <Link href="/" className="flex items-baseline gap-2" data-testid="link-logo">
-          <span className="font-display text-2xl md:text-3xl">{BRAND}</span>
+          <BrandMark className="font-display text-2xl md:text-3xl" />
           <span className="hidden h-1.5 w-1.5 rotate-45 bg-[hsl(var(--gold))] sm:block" aria-hidden="true" />
         </Link>
         <nav aria-label="التنقل الرئيسي" className="ms-10 hidden lg:block">
@@ -155,7 +157,7 @@ function Header() {
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="font-display text-2xl">{BRAND}</span>
+          <BrandMark className="font-display text-2xl" />
           <button
             className="grid h-11 w-11 place-items-center"
             aria-label="إغلاق القائمة"
@@ -199,6 +201,7 @@ function Header() {
 }
 
 function Footer() {
+  const branding = useBranding();
   const groups = [
     { title: 'الأقسام', links: [{ href: '/shop', label: 'كل المتجر' }, ...CATEGORIES.map((c) => ({ href: `/category/${c.slug}`, label: c.name }))] },
     {
@@ -212,7 +215,7 @@ function Footer() {
     {
       title: 'الدار',
       links: [
-        { href: '/about', label: 'عن لمسة شياكة' },
+        { href: '/about', label: `عن ${branding.name}` },
         { href: '/contact', label: 'تواصلي معنا' },
         { href: '/account', label: 'حسابي' },
         { href: '/admin', label: 'حالة إعداد المتجر' },
@@ -223,7 +226,7 @@ function Footer() {
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-10">
         <div>
-          <p className="font-display text-4xl">{BRAND}</p>
+          <p className="font-display text-4xl"><BrandMark className="font-display text-4xl" /></p>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/65">
             حقائب، عطور، وطرح وأوشحة — اللمسة الأخيرة التي تكتمل بها إطلالتك.
           </p>
@@ -246,7 +249,7 @@ function Footer() {
       </div>
       <div className="border-t border-primary-foreground/10">
         <p className="mx-auto max-w-7xl px-6 py-6 text-xs text-primary-foreground/50 md:px-10">
-          © {new Date().getFullYear()} {BRAND}. المتجر في مرحلة الإعداد — لم تُنشر منتجات بعد.
+          © {new Date().getFullYear()} {branding.name}. المتجر في مرحلة الإعداد — لم تُنشر منتجات بعد.
         </p>
       </div>
     </footer>

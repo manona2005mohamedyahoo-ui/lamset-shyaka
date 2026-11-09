@@ -8,6 +8,80 @@
 import * as zod from 'zod';
 
 
+/**
+ * @summary Get the public store identity
+ */
+export const getStoreBrandingResponseBackgroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getStoreBrandingResponseForegroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getStoreBrandingResponsePrimaryRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getStoreBrandingResponseAccentRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+
+
+export const GetStoreBrandingResponse = zod.object({
+  "name": zod.string(),
+  "logoUrl": zod.string().url().nullable(),
+  "background": zod.string().regex(getStoreBrandingResponseBackgroundRegExp),
+  "foreground": zod.string().regex(getStoreBrandingResponseForegroundRegExp),
+  "primary": zod.string().regex(getStoreBrandingResponsePrimaryRegExp),
+  "accent": zod.string().regex(getStoreBrandingResponseAccentRegExp)
+})
+
+
+/**
+ * @summary Get settings for the authorized store administrator
+ */
+export const getAdminStoreBrandingResponseBackgroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getAdminStoreBrandingResponseForegroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getAdminStoreBrandingResponsePrimaryRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const getAdminStoreBrandingResponseAccentRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+
+
+export const GetAdminStoreBrandingResponse = zod.object({
+  "name": zod.string(),
+  "logoUrl": zod.string().url().nullable(),
+  "background": zod.string().regex(getAdminStoreBrandingResponseBackgroundRegExp),
+  "foreground": zod.string().regex(getAdminStoreBrandingResponseForegroundRegExp),
+  "primary": zod.string().regex(getAdminStoreBrandingResponsePrimaryRegExp),
+  "accent": zod.string().regex(getAdminStoreBrandingResponseAccentRegExp)
+})
+
+
+/**
+ * @summary Update the store name, logo, and palette
+ */
+export const updateAdminStoreBrandingBodyNameMax = 80;
+
+export const updateAdminStoreBrandingBodyBackgroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingBodyForegroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingBodyPrimaryRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingBodyAccentRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+
+
+export const UpdateAdminStoreBrandingBody = zod.object({
+  "name": zod.string().min(1).max(updateAdminStoreBrandingBodyNameMax),
+  "logoUrl": zod.string().url().nullable(),
+  "background": zod.string().regex(updateAdminStoreBrandingBodyBackgroundRegExp),
+  "foreground": zod.string().regex(updateAdminStoreBrandingBodyForegroundRegExp),
+  "primary": zod.string().regex(updateAdminStoreBrandingBodyPrimaryRegExp),
+  "accent": zod.string().regex(updateAdminStoreBrandingBodyAccentRegExp)
+})
+
+export const updateAdminStoreBrandingResponseBackgroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingResponseForegroundRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingResponsePrimaryRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+export const updateAdminStoreBrandingResponseAccentRegExp = new RegExp('^#[0-9A-Fa-f]{6}$');
+
+
+export const UpdateAdminStoreBrandingResponse = zod.object({
+  "name": zod.string(),
+  "logoUrl": zod.string().url().nullable(),
+  "background": zod.string().regex(updateAdminStoreBrandingResponseBackgroundRegExp),
+  "foreground": zod.string().regex(updateAdminStoreBrandingResponseForegroundRegExp),
+  "primary": zod.string().regex(updateAdminStoreBrandingResponsePrimaryRegExp),
+  "accent": zod.string().regex(updateAdminStoreBrandingResponseAccentRegExp)
+})
+
+
 export const GetMobileStoreResponse = zod.object({
   "name": zod.string(),
   "managementUrl": zod.string()

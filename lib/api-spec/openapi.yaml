@@ -10,7 +10,60 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: branding
+    description: Public store identity and restricted brand settings
 paths:
+  /store/branding:
+    get:
+      operationId: getStoreBranding
+      tags: [branding]
+      summary: Get the public store identity
+      responses:
+        "200":
+          description: Public store identity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StoreBranding"
+  /admin/store/branding:
+    get:
+      operationId: getAdminStoreBranding
+      tags: [branding]
+      summary: Get settings for the authorized store administrator
+      responses:
+        "200":
+          description: Editable store identity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StoreBranding"
+        "401":
+          description: Sign-in required
+        "403":
+          description: The signed-in account is not a store administrator
+    patch:
+      operationId: updateAdminStoreBranding
+      tags: [branding]
+      summary: Update the store name, logo, and palette
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateStoreBrandingBody"
+      responses:
+        "200":
+          description: Updated store identity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StoreBranding"
+        "400":
+          description: Invalid identity or inaccessible logo URL
+        "401":
+          description: Sign-in required
+        "403":
+          description: The signed-in account is not a store administrator
   /mobile/store:
     get:
       operationId: getMobileStore
@@ -79,6 +132,27 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    StoreBranding:
+      type: object
+      required: [name, logoUrl, background, foreground, primary, accent]
+      properties:
+        name: { type: string }
+        logoUrl: { type: [string, "null"], format: uri }
+        background: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        foreground: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        primary: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        accent: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+    UpdateStoreBrandingBody:
+      type: object
+      additionalProperties: false
+      required: [name, logoUrl, background, foreground, primary, accent]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 80 }
+        logoUrl: { type: [string, "null"], format: uri }
+        background: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        foreground: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        primary: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        accent: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
     MobileStore:
       type: object
       required: [name, managementUrl]

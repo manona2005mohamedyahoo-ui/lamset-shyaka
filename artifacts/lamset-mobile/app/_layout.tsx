@@ -12,6 +12,7 @@ import {
 import { Amiri_400Regular } from '@expo-google-fonts/amiri';
 import { setBaseUrl } from '@workspace/api-client-react';
 import { ShopProvider } from '@/context/shop';
+import { BrandingProvider } from '@/context/branding';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -51,9 +52,11 @@ export default function RootLayout() {
         <QueryClientProvider client={queryClient}>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <KeyboardProvider>
-              <ShopProvider>
-              <RootLayoutNav />
-              </ShopProvider>
+              <BrandingProvider>
+                <ShopProvider>
+                  <RootLayoutNav />
+                </ShopProvider>
+              </BrandingProvider>
             </KeyboardProvider>
           </GestureHandlerRootView>
         </QueryClientProvider>

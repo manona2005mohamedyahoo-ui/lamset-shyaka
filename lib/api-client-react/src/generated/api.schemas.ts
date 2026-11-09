@@ -5,6 +5,38 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface StoreBranding {
+  name: string;
+  /** @nullable */
+  logoUrl: string | null;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  background: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  foreground: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  primary: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  accent: string;
+}
+
+export interface UpdateStoreBrandingBody {
+  /**
+     * @minLength 1
+     * @maxLength 80
+     */
+  name: string;
+  /** @nullable */
+  logoUrl: string | null;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  background: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  foreground: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  primary: string;
+  /** @pattern ^#[0-9A-Fa-f]{6}$ */
+  accent: string;
+}
+
 export interface MobileStore {
   name: string;
   managementUrl: string;

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { BRAND } from '@/lib/site';
+import { useBranding } from '@/context/branding';
 
 function setMeta(attr: 'name' | 'property', key: string, value: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -12,15 +13,18 @@ function setMeta(attr: 'name' | 'property', key: string, value: string) {
 }
 
 export function useSeo(title: string, description: string) {
+  const branding = useBranding();
   useEffect(() => {
-    const full = title === BRAND ? BRAND : `${title} | ${BRAND}`;
+    const pageTitle = title === BRAND ? branding.name : title;
+    const full = pageTitle === branding.name ? branding.name : `${pageTitle} | ${branding.name}`;
+    const currentDescription = description.replaceAll(BRAND, branding.name);
     document.title = full;
-    setMeta('name', 'description', description);
+    setMeta('name', 'description', currentDescription);
     setMeta('property', 'og:title', full);
-    setMeta('property', 'og:description', description);
+    setMeta('property', 'og:description', currentDescription);
     setMeta('name', 'twitter:title', full);
-    setMeta('name', 'twitter:description', description);
-  }, [title, description]);
+    setMeta('name', 'twitter:description', currentDescription);
+  }, [title, description, branding.name]);
 }
 
 export function useReveal<T extends HTMLElement>() {

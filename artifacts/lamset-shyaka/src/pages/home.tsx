@@ -5,10 +5,12 @@ import { ButtonLink, EditorialImage, Ornament, Reveal } from '@/components/edito
 import { useSeo } from '@/hooks/use-seo';
 import { BRAND, CATEGORIES } from '@/lib/site';
 import { cn } from '@/lib/utils';
+import { useBranding } from '@/context/branding';
 
 const TABS = ['الأكثر مبيعًا', 'الجديد', 'المميز', 'العروض'] as const;
 
 function Hero() {
+  const branding = useBranding();
   return (
     <section className="relative">
       <div className="mx-auto grid max-w-7xl md:grid-cols-[1fr_1.15fr] md:items-stretch">
@@ -20,7 +22,7 @@ function Hero() {
             <span className="text-gold">هي ما يُذكَر.</span>
           </h1>
           <p className="rise d2 mt-6 max-w-md text-base text-muted-foreground md:text-lg">
-            في {BRAND} نؤمن أن الأناقة لا تصرخ. حقيبة تُحمل بهدوء، عطر يترك أثرًا، ووشاح ينساب كما ينبغي — لمسات صغيرة تكتمل بها الإطلالة.
+            في {branding.name} نؤمن أن الأناقة لا تصرخ. حقيبة تُحمل بهدوء، عطر يترك أثرًا، ووشاح ينساب كما ينبغي — لمسات صغيرة تكتمل بها الإطلالة.
           </p>
           <div className="rise d3 mt-10 flex flex-wrap items-center gap-4">
             <ButtonLink href="/shop" primary className="min-h-12 px-10">
@@ -140,6 +142,7 @@ function Curated() {
 }
 
 function Manifesto() {
+  const branding = useBranding();
   return (
     <section className="mx-auto mt-28 grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2 md:gap-20 md:px-10">
       <Reveal>
@@ -151,7 +154,7 @@ function Manifesto() {
           «لا نبحث عن الكثير، بل عن القطعة التي تشبهك.»
         </blockquote>
         <p className="mt-6 text-muted-foreground">
-          {BRAND} مساحة صغيرة للمرأة التي تحب أن تختار بهدوء. نجمع الحقيبة والعطر والوشاح في مكان واحد، لأن الإطلالة لا تكتمل بقطعة منفردة.
+          {branding.name} مساحة صغيرة للمرأة التي تحب أن تختار بهدوء. نجمع الحقيبة والعطر والوشاح في مكان واحد، لأن الإطلالة لا تكتمل بقطعة منفردة.
         </p>
         <ButtonLink href="/about" className="mt-8">
           اقرئي عن الدار

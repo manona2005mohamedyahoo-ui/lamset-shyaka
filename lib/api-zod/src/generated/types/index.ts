@@ -15,3 +15,5 @@ export * from './mobileOption';
 export * from './mobileProduct';
 export * from './mobileStore';
 export * from './mobileVariant';
+export * from './storeBranding';
+export * from './updateStoreBrandingBody';
