@@ -5,9 +5,8 @@
 ## الروابط والتحميل
 
 - **[المتجر المنشور](https://lms-shyk.replit.app)**
-- **[حزمة المشروع وملف PowerPoint](https://github.com/manona2005mohamedyahoo-ui/lamset-shyaka/releases/tag/project-bundle-2026-11-09)**
-- **[تحميل العرض التقديمي PPTX مباشرة](https://github.com/manona2005mohamedyahoo-ui/lamset-shyaka/releases/download/project-bundle-2026-11-09/lamset-shyaka-presentation.pptx)**
-- **[تحميل كود هذه الحزمة كاملًا ZIP](https://github.com/manona2005mohamedyahoo-ui/lamset-shyaka/archive/refs/tags/project-bundle-2026-11-09.zip)**
+- **[العرض التقديمي — المصدر القابل للتعديل](artifacts/lamset-overview)**
+- **[تحميل أحدث كود كاملًا ZIP](https://github.com/manona2005mohamedyahoo-ui/lamset-shyaka/archive/refs/heads/main.zip)**
 
 لتحميل أحدث كود بعد أي تعديلات لاحقة، اختاري **Code → Download ZIP** من صفحة المستودع.
 
@@ -39,4 +38,4 @@
 - رفع الكود إلى GitHub لا ينشر تحديثات الموقع تلقائيًا، وقد تختلف النسخة المنشورة عن آخر كود هنا.
 - كود تطبيق الجوال موجود؛ الحزمة لا تتضمن APK أو نسخة iOS قابلة للتثبيت.
 - الحزمة لا تتضمن بيانات العملاء أو نسخة من قاعدة البيانات أو حسابات الإدارة أو مفاتيح الخدمات. تُضبط الخدمات والصلاحيات في بيئة التشغيل.
-- ملف العرض متاح ضمن **Releases** بدل إضافة الملفات المصدّرة إلى سجل الكود.
+- مصدر العرض موجود في هذا المستودع. ملف PowerPoint المصدّر سُلّم منفصلًا في المحادثة؛ لم ينجح رفعه كمرفق GitHub، ولذلك لا يوجد رابط تحميل PPTX هنا.
